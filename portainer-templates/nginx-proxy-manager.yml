@@ -10,4 +10,4 @@ services:
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
-      - ./test:/etc/tet # comment
+      - ./test:/etc/tet # change
