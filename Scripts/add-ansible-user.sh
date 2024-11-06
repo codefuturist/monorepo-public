@@ -111,3 +111,11 @@ else
         read -p "Do you want to set up SSH key? (y/n): " setup_ssh_answer
         if [[ $setup_ssh_answer =~ ^[Yy]$ ]]; then
             setup_ssh
+        fi
+    else
+        echo "Exiting without creating user"
+        exit 0
+    fi
+fi
+
+echo "Script completed successfully"
