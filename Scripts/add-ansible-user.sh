@@ -1,5 +1,40 @@
 #!/bin/bash
 
+# Function to detect package manager and install sudo
+install_sudo() {
+    echo "Checking and installing sudo package..."
+    if command -v apt-get &>/dev/null; then
+        if ! dpkg -l | grep -q "^ii.*sudo"; then
+            apt-get update
+            apt-get install -y sudo
+        fi
+    elif command -v dnf &>/dev/null; then
+        if ! rpm -q sudo &>/dev/null; then
+            dnf install -y sudo
+        fi
+    elif command -v yum &>/dev/null; then
+        if ! rpm -q sudo &>/dev/null; then
+            yum install -y sudo
+        fi
+    elif command -v zypper &>/dev/null; then
+        if ! rpm -q sudo &>/dev/null; then
+            zypper install -y sudo
+        fi
+    elif command -v pacman &>/dev/null; then
+        if ! pacman -Q sudo &>/dev/null; then
+            pacman -Sy --noconfirm sudo
+        fi
+    else
+        echo "Could not detect package manager. Please install sudo manually."
+        exit 1
+    fi
+
+    if ! command -v sudo &>/dev/null; then
+        echo "Failed to install sudo package"
+        exit 1
+    fi
+}
+
 # Function to check if user exists
 check_user_exists() {
     if id "ansible" &>/dev/null; then
@@ -51,7 +86,16 @@ setup_ssh() {
     sudo chown -R ansible:ansible /home/ansible/.ssh
 }
 
+# Check if script is run as root
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run this script as root or with sudo"
+    exit 1
+fi
+
 # Main script
+echo "Checking and installing sudo package..."
+install_sudo
+
 echo "Checking if ansible user exists..."
 if check_user_exists; then
     echo "Ansible user already exists"
@@ -67,11 +111,3 @@ else
         read -p "Do you want to set up SSH key? (y/n): " setup_ssh_answer
         if [[ $setup_ssh_answer =~ ^[Yy]$ ]]; then
             setup_ssh
-        fi
-    else
-        echo "Exiting without creating user"
-        exit 0
-    fi
-fi
-
-echo "Script completed successfully"
