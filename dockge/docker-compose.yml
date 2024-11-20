@@ -3,4 +3,4 @@ services:
     image: nginx:latest
     restart: unless-stopped
     ports:
-      - 1111:80
+      - 1101:80
