@@ -66,3 +66,5 @@ qm set "$VMID" --boot c --bootdisk scsi0
 qm set "$VMID" --serial0 socket --vga serial0
 
 echo "VM $VMID created and configured successfully."
+
+rm -rf /tmp/cloud-image-script/
