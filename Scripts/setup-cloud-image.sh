@@ -1,52 +1,65 @@
+# Exit immediately if a command exits with a non-zero status
+set -e
 
-# Prompt for the disk image file path
-# read -p "Enter the path to your disk image file: " image_path
+# Trap to clean up temporary files
+trap 'rm -rf "/tmp/cloud-image-script/"' EXIT
 
-# Prompt for URL
-echo "Please enter the URL to download:"
-read url
+# Check for required tools
+for cmd in wget qm pvesh; do
+    command -v $cmd >/dev/null 2>&1 || { echo >&2 "Error: $cmd is not installed."; exit 1; }
+done
 
-# Check if URL is provided
-if [ -z "$url" ]; then
-    echo "Error: No URL provided"
+# Prompt for the URL
+read -p "Please enter the URL to download: " url
+
+# Validate URL
+if [[ -z "$url" || ! "$url" =~ ^https?:// ]]; then
+    echo "Error: Invalid or no URL provided."
     exit 1
 fi
 
+# Create temporary directory
+TMP_DIR="/tmp/cloud-image-script"
+mkdir -p "$TMP_DIR"
 
-mkdir -p /tmp/cloud-image-script
-# Extract filename from URL and append date
-FILENAME="downloaded-image.img"
-VMID="8001"
+# Extract filename from URL
+FILENAME=$(basename "$url")
+FILEPATH="$TMP_DIR/$FILENAME"
 
-# Download using wget with custom filename
+# Get next available VMID
+VMID=$(pvesh get /cluster/nextid)
+
+# Prompt for VM Name
+read -p "Enter the VM name [default: ubuntu-cloud-$VMID]: " VMNAME
+VMNAME=${VMNAME:-"ubuntu-cloud-$VMID"}
+
+# VM configuration
+MEMORY=2048
+CORES=2
+STORAGE_POOL="local-lvm"
+
+# Download the image
 echo "Downloading from: $url"
-echo "Saving as: /tmp/cloud-image-script/$FILENAME"
-wget "$url" -O "/tmp/cloud-image-script/$FILENAME"
-
-# Check if download was successful
-if [ $? -eq 0 ]; then
-    echo "Download completed successfully in /tmp/cloud-image-script directory"
-else
-    echo "Download failed"
+echo "Saving as: $FILEPATH"
+if ! wget "$url" -O "$FILEPATH"; then
+    echo "Error: Download failed."
+    exit 1
 fi
+echo "Download completed successfully."
 
-## Check if the file exists
-#if [ ! -f "$image_path" ]; then
-#    echo "Error: File '$image_path' does not exist."
-#    exit 1
-#fi
-#
-## Verify the file is readable
-#if [ ! -r "$image_path" ]; then
-#    echo "Error: Cannot read file '$image_path'. Check permissions."
-#    exit 1
-#fi
+# Create the VM
+echo "Creating VM with ID $VMID and name $VMNAME..."
+qm create "$VMID" --memory "$MEMORY" --cores "$CORES" --name "$VMNAME" --net0 virtio,bridge=vmbr0
 
-qm create "$VMID" --memory 2048 --core 2 --name ubuntu-cloud-test --net0 virtio,bridge=vmbr0
-qm disk import "$VMID" "/tmp/cloud-image-script/$FILENAME" local-lvm
-qm set "$VMID" --scsihw virtio-scsi-pci --scsi0 local:vm-"$VMID"-disk-0
-qm set "$VMID" --ide2 local-lvm:cloudinit
+# Import the disk
+echo "Importing disk..."
+qm importdisk "$VMID" "$FILEPATH" "$STORAGE_POOL"
+
+# Configure the VM
+echo "Configuring VM..."
+qm set "$VMID" --scsihw virtio-scsi-pci --scsi0 "$STORAGE_POOL:vm-$VMID-disk-0"
+qm set "$VMID" --ide2 "$STORAGE_POOL:cloudinit"
 qm set "$VMID" --boot c --bootdisk scsi0
 qm set "$VMID" --serial0 socket --vga serial0
 
-rm -r "/tmp/cloud-image-script/"
+echo "VM $VMID created and configured successfully."
