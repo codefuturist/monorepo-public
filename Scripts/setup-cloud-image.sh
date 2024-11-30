@@ -8,9 +8,9 @@ set -e
 trap 'rm -rf "/tmp/cloud-image-script/"' EXIT
 
 # Check for required tools
-for cmd in wget qm pvesh; do
-    command -v $cmd >/dev/null 2>&1 || { echo >&2 "Error: $cmd is not installed."; exit 1; }
-done
+# for cmd in wget qm pvesh; do
+#    command -v $cmd >/dev/null 2>&1 || { echo >&2 "Error: $cmd is not installed."; exit 1; }
+# done
 
 # Prompt for the URL
 read -p "Please enter the URL to download: " url
