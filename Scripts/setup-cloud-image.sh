@@ -34,7 +34,7 @@ VMID=$(pvesh get /cluster/nextid)
 
 # Prompt for VM Name
 read -p "Enter the VM name [default: cloudinit-$VMID]: " VMNAME
-VMNAME=${VMNAME:-"ubuntu-cloud-$VMID"}
+VMNAME=${VMNAME:-"cloudinit-$VMID"}
 
 # VM configuration
 MEMORY=2048
