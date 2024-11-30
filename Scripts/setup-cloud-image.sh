@@ -33,8 +33,9 @@ FILEPATH="$TMP_DIR/$FILENAME"
 VMID=$(pvesh get /cluster/nextid)
 
 # Prompt for VM Name
-read -p "Enter the VM name [default: cloudinit-$VMID]: " VMNAME
-VMNAME=${VMNAME:-"cloudinit-$VMID"}
+read -p "Enter the VM name [default: cloud-image]: " VMNAME
+# VMNAME=${VMNAME:-"cloudinit-$VMID"}
+VMNAME=${VMNAME:-"cloud-image"}
 
 # VM configuration
 MEMORY=2048
