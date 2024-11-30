@@ -63,6 +63,13 @@ qm set "$VMID" --ide2 "$STORAGE_POOL:cloudinit"
 qm set "$VMID" --boot c --bootdisk scsi0
 qm set "$VMID" --serial0 socket --vga serial0
 
+qm set "$VMID" --sshkey /root/cloud-init/authorized_keys
+
+qm set "$VMID" --ciuser "$CLOUD_INIT_USER"
+qm set "$VMID" --cipassword "$CLOUD_INIT_PASSWORD"
+
+qm cloudinit update "$VMID"
+
 echo "VM $VMID created and configured successfully."
 
 rm -rf /tmp/cloud-image-script/
