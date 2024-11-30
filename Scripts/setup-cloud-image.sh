@@ -49,4 +49,4 @@ qm set "$VMID" --ide2 local-lvm:cloudinit
 qm set "$VMID" --boot c --bootdisk scsi0
 qm set "$VMID" --serial0 socket --vga serial0
 
-rm -rf "/tmp/cloud-image-script/"
+rm -r "/tmp/cloud-image-script/"
