@@ -1,6 +1,3 @@
-
-rm -rf /tmp/cloud-image-script/
-
 # Exit immediately if a command exits with a non-zero status
 set -e
 
@@ -38,8 +35,8 @@ read -p "Enter the VM name [default: cloud-image]: " VMNAME
 VMNAME=${VMNAME:-"cloud-image"}
 
 # VM configuration
-MEMORY=2048
-CORES=2
+MEMORY=4096
+CORES=11
 STORAGE_POOL="local-lvm"
 
 # Download the image
