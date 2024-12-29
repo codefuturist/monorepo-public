@@ -8,3 +8,8 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-p
 ```shell
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/setup-cloud-image.sh)"
 ```
+
+### setup k3s config
+```shell
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/create-k3s-config.sh)"
+```
