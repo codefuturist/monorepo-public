@@ -71,6 +71,7 @@ qm set "$VMID" --sshkey /root/cloud-init/authorized_keys
 
 qm set "$VMID" --ciuser "$CLOUD_INIT_USER"
 qm set "$VMID" --cipassword "$CLOUD_INIT_PASSWORD"
+qm set "$VMID" --ipconfig0 ip=192.168.2.200/24,gw=192.168.2.1
 
 qm cloudinit update "$VMID"
 
