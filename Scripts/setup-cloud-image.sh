@@ -64,7 +64,6 @@ qm set "$VMID" --boot c --bootdisk scsi0
 qm set "$VMID" --serial0 socket --vga serial0
 
 qm set "$VMID" --agent 1
-qm set "$VMID" --balloon 8000
 qm set "$VMID" --memory 10000 --balloon 8000
 
 qm set "$VMID" --sshkey /root/cloud-init/authorized_keys
