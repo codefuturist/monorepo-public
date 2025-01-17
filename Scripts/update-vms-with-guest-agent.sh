@@ -9,16 +9,16 @@ echo -e "\n $(date)"
 excluded_containers=("$@")
 function update_container() {
   container=$1
-  name=$(qm guest exec "$container" hostname)
+  name=$(qm guest exec --timeout 600 "$container" hostname)
   echo -e "\n [Info] Updating $container : $name \n"
   os=$(qm config "$container" | awk '/^description:/ {print $0}' | grep -o 'ostype-.*' | cut -d'-' -f2)
   case "$os" in
-  alpine) qm guest exec "$container" -- ash -c "apk update && apk upgrade" ;;
-  archlinux) qm guest exec "$container" -- bash -c "pacman -Syyu --noconfirm" ;;
-  fedora | rocky | centos | alma) qm guest exec "$container" -- bash -c "dnf -y update && dnf -y upgrade" ;;
-  # ubuntu | debian | devuan) qm guest exec "$container" -- bash -c "apt update && DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confold" dist-upgrade -y; rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED" ;;
-  ubuntu | debian | devuan) qm guest exec "$container" -- bash -c "apt update && DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confold" dist-upgrade -y" ;;
-  opensuse) qm guest exec "$container" -- bash -c "zypper ref && zypper --non-interactive dup" ;;
+  alpine) qm guest exec --timeout 600 "$container" -- ash -c "apk update && apk upgrade" ;;
+  archlinux) qm guest exec --timeout 600 "$container" -- bash -c "pacman -Syyu --noconfirm" ;;
+  fedora | rocky | centos | alma) qm guest exec --timeout 600 "$container" -- bash -c "dnf -y update && dnf -y upgrade" ;;
+  # ubuntu | debian | devuan) qm guest exec --timeout 600 "$container" -- bash -c "apt update && DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confold" dist-upgrade -y; rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED" ;;
+  ubuntu | debian | devuan) qm guest exec --timeout 600 "$container" -- bash -c "apt update && DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confold" dist-upgrade -y" ;;
+  opensuse) qm guest exec --timeout 600 "$container" -- bash -c "zypper ref && zypper --non-interactive dup" ;;
   esac
 }
 
