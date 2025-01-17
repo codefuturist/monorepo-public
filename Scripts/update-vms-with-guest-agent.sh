@@ -39,7 +39,7 @@ for container in $(qm list | awk '{if(NR>1) print $1}'); do
     if [ "$template" == "false" ] && [ "$status" == "status: stopped" ]; then
       echo -e "[Info] Starting $container"
       qm start $container
-      sleep 5
+      sleep 60
       update_container $container
       echo -e "[Info] Shutting down $container"
       qm shutdown $container &
