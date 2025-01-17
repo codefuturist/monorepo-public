@@ -5,8 +5,6 @@
 # License: MIT
 # https://github.com/community-scripts/ProxmoxVE/raw/main/LICENSE
 
- # ubuntu | debian | devuan) qm guest exec "$container" -- bash -c "apt update && DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confold" dist-upgrade -y; rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED" ;;
-
 echo -e "\n $(date)"
 excluded_containers=("$@")
 function update_container() {
@@ -18,7 +16,8 @@ function update_container() {
   alpine) qm guest exec "$container" -- ash -c "apk update && apk upgrade" ;;
   archlinux) qm guest exec "$container" -- bash -c "pacman -Syyu --noconfirm" ;;
   fedora | rocky | centos | alma) qm guest exec "$container" -- bash -c "dnf -y update && dnf -y upgrade" ;;
-  ubuntu | debian | devuan) qm guest exec "$container" -- bash -c "apt update && DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confold" dist-upgrade -y;" ;;
+  # ubuntu | debian | devuan) qm guest exec "$container" -- bash -c "apt update && DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confold" dist-upgrade -y; rm -rf /usr/lib/python3.*/EXTERNALLY-MANAGED" ;;
+  ubuntu | debian | devuan) qm guest exec "$container" -- bash -c "apt update && DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confold" dist-upgrade -y" ;;
   opensuse) qm guest exec "$container" -- bash -c "zypper ref && zypper --non-interactive dup" ;;
   esac
 }
