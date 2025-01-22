@@ -58,6 +58,7 @@ qm importdisk "$VMID" "$FILEPATH" "$STORAGE_POOL"
 
 # Configure the VM
 echo "Configuring VM..."
+qm set "$VMID" --ostype l26
 qm set "$VMID" --scsihw virtio-scsi-pci --scsi0 "$STORAGE_POOL:vm-$VMID-disk-0"
 qm set "$VMID" --ide2 "$STORAGE_POOL:cloudinit"
 qm set "$VMID" --boot c --bootdisk scsi0
