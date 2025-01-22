@@ -26,5 +26,5 @@ curl -sfL https://get.k3s.io | sh -s - --config /etc/rancher/k3s/config.yaml
 ```
 ### add deployment fixer
 ```shell
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/add-ansible-user.sh)"
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/restart-k3s-deployments.sh"
 ```
