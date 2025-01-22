@@ -17,9 +17,17 @@ kubectl scale \
   statefulset/mariadb-primary \
   statefulset/postgresql-primary \
   --replicas=0 -n database
-
+  
+kubectl scale \
+  statefulset/authentik-redis-master \
+  --replicas=0 -n access-control
+  
 # Wait for 60 seconds
 sleep 60
+
+kubectl scale \
+  statefulset/authentik-redis-master \
+  --replicas=1 -n access-control
 
 # Scale up all experimental namespace resources to 1
 kubectl scale \
