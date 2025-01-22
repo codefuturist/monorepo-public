@@ -13,7 +13,7 @@ kubectl scale deployment/mongodb --replicas=0 -n database
 kubectl scale statefulset/mariadb-primary --replicas=0 -n database
 kubectl scale statefulset/postgresql-primary --replicas=0 -n database
 
-sleep 120
+sleep 60
 
 kubectl scale deployment/erpnext-gunicorn   --replicas=1 -n experimental
 kubectl scale deployment/erpnext-nginx      --replicas=1 -n experimental
