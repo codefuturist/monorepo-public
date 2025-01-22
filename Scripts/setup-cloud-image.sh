@@ -10,7 +10,7 @@ trap 'rm -rf "/tmp/cloud-image-script/"' EXIT
 # done
 
 # Prompt for the URL
-read -p "Please enter the URL to download: " url
+read -p "Please enter the URL to download (.img): " url
 
 # Validate URL
 if [[ -z "$url" || ! "$url" =~ ^https?:// ]]; then
