@@ -8,6 +8,8 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-p
 ```shell
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/setup-cloud-image.sh)"
 ```
+https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img
+
 images here: https://cloud-images.ubuntu.com/noble/current/
 
 ### update vms
