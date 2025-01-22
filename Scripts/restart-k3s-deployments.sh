@@ -1,29 +1,41 @@
 #!/usr/bin/env bash
 
-kubectl scale deployment/erpnext-gunicorn   --replicas=0 -n experimental
-kubectl scale deployment/erpnext-nginx      --replicas=0 -n experimental
-kubectl scale deployment/erpnext-scheduler  --replicas=0 -n experimental
-kubectl scale deployment/erpnext-socketio   --replicas=0 -n experimental
-kubectl scale deployment/erpnext-worker-d   --replicas=0 -n experimental
-kubectl scale deployment/erpnext-worker-l   --replicas=0 -n experimental
-kubectl scale deployment/erpnext-worker-s   --replicas=0 -n experimental
+kubectl scale \
+  deployment/erpnext-gunicorn \
+  deployment/erpnext-nginx \
+  deployment/erpnext-scheduler \
+  deployment/erpnext-socketio \
+  deployment/erpnext-worker-d \
+  deployment/erpnext-worker-l \
+  deployment/erpnext-worker-s \
+  statefulset/erpnext-mariadb \
+  --replicas=0 -n experimental
 
-kubectl scale statefulset/erpnext-mariadb --replicas=0 -n experimental
-kubectl scale deployment/mongodb --replicas=0 -n database
-kubectl scale statefulset/mariadb-primary --replicas=0 -n database
-kubectl scale statefulset/postgresql-primary --replicas=0 -n database
+# Scale down all database namespace resources to 0
+kubectl scale \
+  deployment/mongodb \
+  statefulset/mariadb-primary \
+  statefulset/postgresql-primary \
+  --replicas=0 -n database
 
+# Wait for 60 seconds
 sleep 60
 
-kubectl scale deployment/erpnext-gunicorn   --replicas=1 -n experimental
-kubectl scale deployment/erpnext-nginx      --replicas=1 -n experimental
-kubectl scale deployment/erpnext-scheduler  --replicas=1 -n experimental
-kubectl scale deployment/erpnext-socketio   --replicas=1 -n experimental
-kubectl scale deployment/erpnext-worker-d   --replicas=1 -n experimental
-kubectl scale deployment/erpnext-worker-l   --replicas=1 -n experimental
-kubectl scale deployment/erpnext-worker-s   --replicas=1 -n experimental
+# Scale up all experimental namespace resources to 1
+kubectl scale \
+  deployment/erpnext-gunicorn \
+  deployment/erpnext-nginx \
+  deployment/erpnext-scheduler \
+  deployment/erpnext-socketio \
+  deployment/erpnext-worker-d \
+  deployment/erpnext-worker-l \
+  deployment/erpnext-worker-s \
+  statefulset/erpnext-mariadb \
+  --replicas=1 -n experimental
 
-kubectl scale statefulset/erpnext-mariadb --replicas=1 -n experimental
-kubectl scale deployment/mongodb --replicas=1 -n database
-kubectl scale statefulset/mariadb-primary --replicas=1 -n database
-kubectl scale statefulset/postgresql-primary --replicas=1 -n database
+# Scale up all database namespace resources to 1
+kubectl scale \
+  deployment/mongodb \
+  statefulset/mariadb-primary \
+  statefulset/postgresql-primary \
+  --replicas=1 -n database
