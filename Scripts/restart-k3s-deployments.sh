@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 kubectl scale deployment/erpnext-gunicorn   --replicas=0 -n experimental
 kubectl scale deployment/erpnext-nginx      --replicas=0 -n experimental
