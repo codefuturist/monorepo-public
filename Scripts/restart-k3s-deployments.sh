@@ -8,7 +8,7 @@ kubectl scale deployment/erpnext-worker-d   --replicas=0 -n experimental
 kubectl scale deployment/erpnext-worker-l   --replicas=0 -n experimental
 kubectl scale deployment/erpnext-worker-s   --replicas=0 -n experimental
 
-kubectl scale statefulset/erpnext-mariadb --replicas=0 -n database
+kubectl scale statefulset/erpnext-mariadb --replicas=0 -n experimental
 kubectl scale deployment/mongodb --replicas=0 -n database
 kubectl scale statefulset/mariadb-primary --replicas=0 -n database
 kubectl scale statefulset/postgresql-primary --replicas=0 -n database
