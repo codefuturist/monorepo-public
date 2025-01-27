@@ -10,6 +10,10 @@ CONFIG_CONTENT=$(cat <<EOF
 # Enable cluster initialization
 # cluster-init: true
 
+server: https://192.168.2.77:6443
+token: token
+node-name: k3s-hybrid-3
+
 # Set custom data directory
 data-dir: "/var/lib/rancher/k3s"
 
