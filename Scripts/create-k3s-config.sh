@@ -28,6 +28,7 @@ tls-san:
   - "k3s-master-lb.pandia.io"
   - "192.168.2.130"
   - "192.168.2.50"
+  - "192.168.2.133"
 
 # Set kubeconfig write permissions
 write-kubeconfig-mode: "644"
