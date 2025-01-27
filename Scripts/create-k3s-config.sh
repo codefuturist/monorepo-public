@@ -10,8 +10,8 @@ CONFIG_CONTENT=$(cat <<EOF
 # Enable cluster initialization
 # cluster-init: true
 
-server: https://192.168.2.77:6443
-token: token
+server: "https://192.168.2.77:6443"
+token: ""
 node-name: k3s-hybrid-3
 
 # Set custom data directory
@@ -46,7 +46,10 @@ kube-apiserver-arg:
 kube-controller-arg:
   - "node-monitor-period=20s"
   - "node-monitor-grace-period=20s"
-
+  
+node-label:
+  - other=what
+  
 # node-taint+:
 #  - charlie=delta:NoSchedule
 
