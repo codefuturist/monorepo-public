@@ -30,3 +30,8 @@ curl -sfL https://get.k3s.io | sh -s - --config /etc/rancher/k3s/config.yaml
 ```shell
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/restart-k3s-deployments.sh)"
 ```
+
+### ubuntu basic setup
+```shell
+bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/basic-ubuntu-setup.sh)"
+```
