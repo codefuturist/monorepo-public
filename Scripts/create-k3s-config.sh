@@ -8,7 +8,7 @@ fi
 # Define the configuration content
 CONFIG_CONTENT=$(cat <<EOF
 # Enable cluster initialization
-cluster-init: true
+# cluster-init: true
 
 # Set custom data directory
 data-dir: "/var/lib/rancher/k3s"
