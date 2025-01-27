@@ -47,6 +47,10 @@ kube-controller-arg:
   - "node-monitor-period=20s"
   - "node-monitor-grace-period=20s"
 
+# node-taint+:
+#  - charlie=delta:NoSchedule
+
+
 # Pass arguments to the Kubernetes Kubelet
 kubelet-arg:
   - "node-status-update-frequency=5s"
