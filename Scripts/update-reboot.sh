@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # auto_update_reboot.sh
 # Updates Ubuntu packages and reboots if needed, without any user interaction.
