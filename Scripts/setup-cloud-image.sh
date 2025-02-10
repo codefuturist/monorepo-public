@@ -37,7 +37,7 @@ VMNAME=${VMNAME:-"cloud-image"}
 # VM configuration
 MEMORY=4096
 CORES=11
-STORAGE_POOL="local-lvm"
+STORAGE_POOL="local-zfs"
 
 # Download the image
 echo "Downloading from: $url"
