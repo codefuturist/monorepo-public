@@ -63,6 +63,7 @@ qm set "$VMID" --scsihw virtio-scsi-pci --scsi0 "$STORAGE_POOL:vm-$VMID-disk-0"
 qm set "$VMID" --ide2 "$STORAGE_POOL:cloudinit"
 qm set "$VMID" --boot c --bootdisk scsi0
 qm set "$VMID" --serial0 socket --vga serial0
+qm resize "$VMID" scsi0 +4G
 
 qm set "$VMID" --agent 1
 qm set "$VMID" --memory 10000
