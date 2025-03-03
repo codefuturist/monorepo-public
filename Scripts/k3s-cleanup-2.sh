@@ -23,6 +23,10 @@
 #   4. Maintain logs of cleaned resources for audit/debugging purposes.
 #
 
+# sudo crontab -e
+# Run daily at 3 AM
+# 0 3 * * * /usr/local/bin/k3s-maintenance.sh >> /var/log/k3s-maintenance.log 2>&1
+
 set -euo pipefail
 
 # ----------------------------------------------------------------------
