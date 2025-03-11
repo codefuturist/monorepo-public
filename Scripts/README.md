@@ -7,7 +7,7 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-p
 
 ### replace ansible ssh trusted keys
 ```shell
-bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/replace-ansible-ssh-trusted-keys.sh)"
+bash -c '$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/replace-ansible-ssh-trusted-keys.sh)'
 ```
 
 ### setup cloud image
