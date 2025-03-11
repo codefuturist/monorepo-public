@@ -51,7 +51,7 @@ fi
 
 # 3) Ensure the .ssh directory exists with the correct permissions
 if [ ! -d "${SSH_DIR}" ]; then
-  mkdir -p "${SSH_DIR}"
+  # mkdir -p "${SSH_DIR}"
   chown "${ANSIBLE_USER}:${ANSIBLE_USER}" "${SSH_DIR}"
   chmod 700 "${SSH_DIR}"
   echo "Created directory: ${SSH_DIR}"
