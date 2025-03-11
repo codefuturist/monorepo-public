@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 #
 # Usage examples:
 #   1) Provide both arguments explicitly:
