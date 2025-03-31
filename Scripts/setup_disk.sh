@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Usage: sudo ./setup_disk.sh /dev/sdX /mount/point
 
