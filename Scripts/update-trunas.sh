@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 cli -c "system update check_available"
 cli -c "system update update"
