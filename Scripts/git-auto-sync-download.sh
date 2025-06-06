@@ -15,3 +15,5 @@ if [ "/tmp/$SCRIPT_NAME" != "$DEST_PATH" ]; then
 else
   echo "Source and destination are the same, skipping install."
 fi
+
+# 0 * * * * /usr/local/bin/git-auto-sync-download.sh >> /var/log/git-auto-sync.log 2>&1
