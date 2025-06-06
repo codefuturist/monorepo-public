@@ -1,9 +1,15 @@
 #!/usr/bin/env zsh
 
-SCRIPT_NAME="git-auto-sync2.sh"
-SCRIPT_FOLDER="/usr/local/bin"
-SCRIPT_USER="colin"
+SCRIPT_URL="${SCRIPT_URL:-https://raw.githubusercontent.com/codefuturist/monorepo-public/main/Scripts/git-auto-sync2.sh}"
+SCRIPT_NAME="${SCRIPT_NAME:-git-auto-sync2.sh}"
+DEST_DIR="${DEST_DIR:-/usr/local/bin}"
+DEST_PATH="$DEST_DIR/$SCRIPT_NAME"
+USER="${SCRIPT_USER:-$USER}"
 
-cd "$SCRIPT_FOLDER"
-curl -fsSL "https://raw.githubusercontent.com/codefuturist/monorepo-public/main/Scripts/$SCRIPT_NAME" -o "$SCRIPT_NAME"
-install -o "$SCRIPT_USER" -g "$SCRIPT_USER" -m 777 "$SCRIPT_NAME" "$SCRIPT_FOLDER"
+curl -fsSL "$SCRIPT_URL" -o "/tmp/$SCRIPT_NAME" || { echo "Download failed"; exit 1; }
+
+if [ "/tmp/$SCRIPT_NAME" != "$DEST_PATH" ]; then
+  install -o "$USER" -g "$USER" -m 777 "/tmp/$SCRIPT_NAME" "$DEST_PATH"
+else
+  echo "Source and destination are the same, skipping install."
+fi
