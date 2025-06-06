@@ -3,7 +3,7 @@
 zsh -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/git-auto-sync-install.sh)"
 ```
 ```shell
-zsh -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/git-auto-sync-install-download.sh)"
+zsh -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/git-auto-sync-download.sh)"
 ```
 ```shell
 zsh -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/git-auto-pull.sh)"
