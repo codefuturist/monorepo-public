@@ -12,6 +12,7 @@ curl -fsSL "$SCRIPT_URL" -o "/tmp/$SCRIPT_NAME" || { echo "Download failed"; exi
 # wget -q -O "$TMP_FILE" "$SCRIPT_URL" || { echo "Download failed"; exit 1; }
 
 if [ "/tmp/$SCRIPT_NAME" != "$DEST_PATH" ]; then
+  rm -f "$DEST_PATH"
   install -o "$USER" -g "$USER" -m 777 "/tmp/$SCRIPT_NAME" "$DEST_PATH"
 else
   echo "Source and destination are the same, skipping install."
