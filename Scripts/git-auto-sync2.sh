@@ -20,7 +20,7 @@ tty -s && { BLD=$'\e[1m'; GRN=$'\e[32m'; RED=$'\e[31m'; YEL=$'\e[33m'; CLR=$'\e[
 #BRANCH="main"
 #LOG_FILE="/var/log/git-auto-sync.log"
 LOG_DIR="${5:-${GIT_AUTO_SYNC_LOG_DIR:-"/var/log"}}"
-REPO_DIR="${1:-${GIT_AUTO_SYNC_REPO_DIR:-""}}"
+REPO_DIR="${1:-${GIT_AUTO_SYNC_REPO_DIR:-"/home/colin/scripts"}}"
 REMOTE="${2:-${GIT_AUTO_SYNC_REMOTE:-origin}}"
 BRANCH="${3:-${GIT_AUTO_SYNC_BRANCH:-main}}"
 LOG_FILE="${4:-${GIT_AUTO_SYNC_LOG_FILE:-"$LOG_DIR/git-auto-sync.log"}}"
