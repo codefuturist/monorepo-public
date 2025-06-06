@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 SCRIPT_NAME="git-auto-sync2.sh"
-SCRIPT_FOLDER="./"
+SCRIPT_FOLDER="/usr/local/bin"
 SCRIPT_USER="colin"
 
 cd "$SCRIPT_FOLDER"
