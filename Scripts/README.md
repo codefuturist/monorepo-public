@@ -1,8 +1,10 @@
 ### Git Auto Sync Install
 ```shell
-zsh -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/git-sync-install.sh)"
+zsh -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/git-auto-sync-install.sh)"
 ```
-
+```shell
+zsh -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/git-auto-pull.sh)"
+```
 
 ### add ansible user
 ```shell
