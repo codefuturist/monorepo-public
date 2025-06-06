@@ -9,7 +9,7 @@
 #
 # Exit codes: 0=OK, 1=arg error, 2=repo problem, 3=git failure
 
-set -euo pipefail
+# set -euo pipefail
 
 # ── Colours (fallback to plain if no TTY) ─────────────────────────────────────
 tty -s && { BLD=$'\e[1m'; GRN=$'\e[32m'; RED=$'\e[31m'; YEL=$'\e[33m'; CLR=$'\e[0m'; } || { BLD= GRN= RED= YEL= CLR=; }
@@ -19,6 +19,7 @@ tty -s && { BLD=$'\e[1m'; GRN=$'\e[32m'; RED=$'\e[31m'; YEL=$'\e[33m'; CLR=$'\e[
 #REMOTE="origin"
 #BRANCH="main"
 #LOG_FILE="/var/log/git-auto-sync.log"
+LOG_DIR="${5:-${GIT_AUTO_SYNC_LOG_DIR:-"/var/log"}}"
 REPO_DIR="${1:-${GIT_AUTO_SYNC_REPO_DIR:-""}}"
 REMOTE="${2:-${GIT_AUTO_SYNC_REMOTE:-origin}}"
 BRANCH="${3:-${GIT_AUTO_SYNC_BRANCH:-main}}"
