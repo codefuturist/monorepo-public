@@ -77,7 +77,7 @@ run() {
 }
 
 # TIMESTAMP=$(date --iso-seconds)
-TIMESTAMP=$(date)
+TIMESTAMP=$(date +"%d.%m.%y %H:%M:%S")
 if $QUIET; then
   run || { echo "[$TIMESTAMP] FAILED sync $REPO_DIR" >>"$LOG_FILE"; exit 3; }
 else
