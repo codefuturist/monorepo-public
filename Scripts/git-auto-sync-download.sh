@@ -4,7 +4,8 @@ SCRIPT_URL="${SCRIPT_URL:-https://raw.githubusercontent.com/codefuturist/monorep
 SCRIPT_NAME="${SCRIPT_NAME:-git-auto-sync2.sh}"
 DEST_DIR="${DEST_DIR:-/usr/local/bin}"
 DEST_PATH="$DEST_DIR/$SCRIPT_NAME"
-USER="${SCRIPT_USER:-$USER}"
+# USER="${SCRIPT_USER:-$USER}"
+USER="${SCRIPT_USER:-colin}"
 
 curl -fsSL "$SCRIPT_URL" -o "/tmp/$SCRIPT_NAME" || { echo "Download failed"; exit 1; }
 
