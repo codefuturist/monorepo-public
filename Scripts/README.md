@@ -1,4 +1,8 @@
- 
+### Git Auto Sync
+```shell
+zsh -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/git-sync-install.sh)"
+```
+
 
 ### add ansible user
 ```shell
