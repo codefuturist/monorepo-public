@@ -9,4 +9,4 @@ wget "https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/
 # curl -O "https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/Scripts/$SCRIPT_NAME"
 
 chown $SCRIPT_USER:$SCRIPT_USER "$SCRIPT_NAME"
-chmod 770 "$SCRIPT_NAME"
+chmod 777 "$SCRIPT_NAME"
