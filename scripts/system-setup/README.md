@@ -36,18 +36,13 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-p
 
 **Common Usage Examples:**
 ```shell
-# Interactive mode (enable password auth)
 sudo ./ssh-config-manager.sh
 
-# Enable password auth, auto-confirm, restart service
 sudo ./ssh-config-manager.sh --enable-password -y -r
 
-# Apply security hardening preset
 sudo ./ssh-config-manager.sh --hardening-preset -y
 
-# Change SSH port and disable root login
 sudo ./ssh-config-manager.sh --change-port 2222 --disable-root -r
 
-# Show current SSH configuration
 sudo ./ssh-config-manager.sh --show-current
 ```

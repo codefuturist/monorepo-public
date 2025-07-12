@@ -87,17 +87,14 @@ bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-p
 
 ### SSH Configuration Management
 ```shell
-# Comprehensive SSH config manager
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/scripts/system-setup/ssh-config-manager.sh)"
 ```
 
 ### System Setup & Configuration
 ```shell
-# Install Docker
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/scripts/system-setup/install-docker.sh)"
 ```
 ```shell
-# Setup additional disks
 bash -c "$(wget -qLO - https://raw.githubusercontent.com/codefuturist/monorepo-public/refs/heads/main/scripts/system-setup/setup-disk.sh)"
 ```
 
