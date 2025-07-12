@@ -1,0 +1,6 @@
+services:
+  nginx-git:
+    image: nginx:latest
+    restart: unless-stopped
+    ports:
+      - 1101:80
