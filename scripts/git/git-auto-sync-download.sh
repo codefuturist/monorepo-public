@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
-SCRIPT_URL="${SCRIPT_URL:-https://raw.githubusercontent.com/codefuturist/monorepo-public/main/scripts/git/git-auto-sync2.sh}"
-SCRIPT_NAME="${SCRIPT_NAME:-git-auto-sync2.sh}"
+SCRIPT_URL="${SCRIPT_URL:-https://raw.githubusercontent.com/codefuturist/monorepo-public/main/scripts/git/git-auto-sync.sh}"
+SCRIPT_NAME="${SCRIPT_NAME:-git-auto-sync.sh}"
 DEST_DIR="${DEST_DIR:-/usr/local/bin}"
 DEST_PATH="$DEST_DIR/$SCRIPT_NAME"
 # USER="${SCRIPT_USER:-$USER}"
